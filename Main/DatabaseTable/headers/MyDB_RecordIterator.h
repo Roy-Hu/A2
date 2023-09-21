@@ -1,4 +1,3 @@
-
 #ifndef REC_ITER_H
 #define REC_ITER_H
 

@@ -1,15 +1,28 @@
-
 #ifndef PAGE_RW_H
 #define PAGE_RW_H
 
 #include "MyDB_PageType.h"
 #include "MyDB_TableReaderWriter.h"
 
+struct PageOverlay {
+	MyDB_PageType pageType;
+	int numBytesUsed;
+	// Meta data is PUT Above bytes[0]
+
+    char bytes[0]; /* this is where the data will be */
+};
+
+class MyDB_PageReaderWriter;
+
+typedef shared_ptr <MyDB_PageReaderWriter> MyDB_PageReaderWriterPtr;
+
 class MyDB_PageReaderWriter {
 
 public:
 
 	// ANY OTHER METHODS YOU WANT HERE
+	MyDB_PageReaderWriter (MyDB_BufferManagerPtr bfMgrIn, MyDB_TablePtr whichTable, long i);
+	MyDB_PageHandle getPage ();
 
 	// empties out the contents of this page, so that it has no records in it
 	// the type of the page is set to MyDB_PageType :: RegularPage
@@ -34,6 +47,8 @@ public:
 private:
 
 	// ANYTHING ELSE YOU WANT HERE
+	MyDB_PageHandle page;
+	MyDB_BufferManagerPtr bfMgr;
 };
 
 #endif

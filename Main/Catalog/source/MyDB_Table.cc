@@ -88,7 +88,7 @@ map <string, MyDB_TablePtr> MyDB_Table :: getAllTables (MyDB_CatalogPtr fromMe) 
 	map <string, MyDB_TablePtr> returnVal;
 
 	// get all of the tables
-        vector <string> myTables;
+	vector <string> myTables;
 	fromMe->getStringList ("tables", myTables);
 
 	// extract each of the tables from the catalog
@@ -116,7 +116,7 @@ bool MyDB_Table :: fromCatalog (string tableNameIn, MyDB_CatalogPtr catalog) {
 	
 	// get the storage location
 	tableName = tableNameIn;
-        if (!catalog->getString (tableName + ".fileName", storageLoc)) {
+	if (!catalog->getString (tableName + ".fileName", storageLoc)) {
 		return false;
 	}
 
@@ -125,7 +125,7 @@ bool MyDB_Table :: fromCatalog (string tableNameIn, MyDB_CatalogPtr catalog) {
 	mySchema->fromCatalog (tableName, catalog);
 
 	// get the size
-        catalog->getInt (tableName + ".lastPage", last);
+   catalog->getInt (tableName + ".lastPage", last);
 
 	// get the type
 	catalog->getString (tableName + ".fileType", fileType);
@@ -151,11 +151,11 @@ bool MyDB_Table :: fromCatalog (string tableNameIn, MyDB_CatalogPtr catalog) {
 
 void MyDB_Table :: putInCatalog (MyDB_CatalogPtr catalog) {
 
-        // get the list of tables
-        vector <string> myTables;
-        catalog->getStringList ("tables", myTables);
+	// get the list of tables
+	vector <string> myTables;
+	catalog->getStringList ("tables", myTables);
 
-        // add the new table in, if not there
+	// add the new table in, if not there
 	bool inthere = false;	
 	for (string s : myTables) {
 		if (s == tableName)
@@ -168,7 +168,7 @@ void MyDB_Table :: putInCatalog (MyDB_CatalogPtr catalog) {
 	}
 
 	// remember the storage location
-        catalog->putString (tableName + ".fileName", storageLoc);
+	catalog->putString (tableName + ".fileName", storageLoc);
 
 	// and the type
 	catalog->putString (tableName + ".fileType", fileType);
@@ -189,7 +189,7 @@ void MyDB_Table :: putInCatalog (MyDB_CatalogPtr catalog) {
 	catalog->putString (tableName + ".sortAtt", sortAtt);
 
 	// remember the last page in the file
-        catalog->putInt (tableName + ".lastPage", last);
+	catalog->putInt (tableName + ".lastPage", last);
 
 	// and add the schema in 
 	mySchema->putInCatalog (tableName, catalog);	

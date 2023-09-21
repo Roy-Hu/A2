@@ -1,4 +1,3 @@
-
 #ifndef TABLE_RW_H
 #define TABLE_RW_H
 
@@ -44,12 +43,15 @@ public:
 	// access the i^th page in this file
 	MyDB_PageReaderWriter operator [] (size_t i);
 
-        // access the last page in the file
-        MyDB_PageReaderWriter last ();
+	// access the last page in the file
+	MyDB_PageReaderWriter last ();
 
 private:
 
 	// ANYTHING YOU NEED HERE
+	MyDB_TablePtr table;
+	MyDB_BufferManagerPtr bfMgr;
+	MyDB_RecordPtr record;
 };
 
 #endif

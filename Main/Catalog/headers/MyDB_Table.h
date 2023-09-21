@@ -78,16 +78,16 @@ public:
 	void setRootLocation (int toMe);
 	int getRootLocation ();
 
-        // get the distinct value count for an attribute
-        size_t getDistinctValues (string forMe);
-        size_t getDistinctValues (int forMe);
+	// get the distinct value count for an attribute
+	size_t getDistinctValues (string forMe);
+	size_t getDistinctValues (int forMe);
 
-        // set the distinct value count for all attributes
-        void setDistinctValues (vector <size_t> &toMe);
+	// set the distinct value count for all attributes
+	void setDistinctValues (vector <size_t> &toMe);
 
-        // get/set the number of tuples in the relation
-        void setTupleCount (size_t toMe);
-        size_t getTupleCount ();
+	// get/set the number of tuples in the relation
+	void setTupleCount (size_t toMe);
+	size_t getTupleCount ();
 
 private:
 
